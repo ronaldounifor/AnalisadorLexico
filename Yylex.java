@@ -59,9 +59,9 @@ class Yylex {
   private static final int [] ZZ_CMAP_BLOCKS = zzUnpackcmap_blocks();
 
   private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
-    "\60\0\12\1\7\0\32\2\6\0\4\2\1\3\3\2"+
-    "\1\4\4\2\1\5\3\2\1\6\1\2\1\7\1\10"+
-    "\5\2\u0185\0";
+    "\50\0\1\1\7\0\12\2\7\0\32\3\6\0\4\3"+
+    "\1\4\3\3\1\5\4\3\1\6\3\3\1\7\1\3"+
+    "\1\10\1\11\5\3\u0185\0";
 
   private static int [] zzUnpackcmap_blocks() {
     int [] result = new int[512];
@@ -88,10 +88,10 @@ class Yylex {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\5\3\1\4\3\3\1\5";
+    "\1\0\1\1\1\2\1\3\5\4\1\5\3\4\1\6";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[13];
+    int [] result = new int[14];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -116,11 +116,11 @@ class Yylex {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\11\0\22\0\33\0\44\0\55\0\66\0\77"+
-    "\0\33\0\110\0\121\0\132\0\33";
+    "\0\0\0\12\0\12\0\24\0\36\0\50\0\62\0\74"+
+    "\0\106\0\36\0\120\0\132\0\144\0\36";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[13];
+    int [] result = new int[14];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -143,14 +143,14 @@ class Yylex {
   private static final int [] ZZ_TRANS = zzUnpacktrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\2\4\1\5\1\4\1\6\2\4\12\0"+
-    "\1\3\10\0\10\4\1\0\4\4\1\7\3\4\1\0"+
-    "\2\4\1\10\5\4\1\0\6\4\1\11\1\4\1\0"+
-    "\6\4\1\12\1\4\1\0\7\4\1\13\1\0\5\4"+
-    "\1\14\2\4\1\0\4\4\1\15\3\4";
+    "\1\2\1\3\1\4\2\5\1\6\1\5\1\7\2\5"+
+    "\14\0\1\4\11\0\10\5\2\0\4\5\1\10\3\5"+
+    "\2\0\2\5\1\11\5\5\2\0\6\5\1\12\1\5"+
+    "\2\0\6\5\1\13\1\5\2\0\7\5\1\14\2\0"+
+    "\5\5\1\15\2\5\2\0\4\5\1\16\3\5";
 
   private static int [] zzUnpacktrans() {
-    int [] result = new int[99];
+    int [] result = new int[110];
     int offset = 0;
     offset = zzUnpacktrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -193,10 +193,10 @@ class Yylex {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\13\1";
+    "\1\0\2\11\13\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[13];
+    int [] result = new int[14];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -256,9 +256,11 @@ class Yylex {
   private int zzFinalHighSurrogate = 0;
 
   /** Number of newlines encountered up to the start of the matched text. */
+  @SuppressWarnings("unused")
   private int yyline;
 
   /** Number of characters from the last newline up to the start of the matched text. */
+  @SuppressWarnings("unused")
   private int yycolumn;
 
   /** Number of characters up to the start of the matched text. */
@@ -561,63 +563,6 @@ class Yylex {
     while (true) {
       zzMarkedPosL = zzMarkedPos;
 
-      boolean zzR = false;
-      int zzCh;
-      int zzCharCount;
-      for (zzCurrentPosL = zzStartRead  ;
-           zzCurrentPosL < zzMarkedPosL ;
-           zzCurrentPosL += zzCharCount ) {
-        zzCh = Character.codePointAt(zzBufferL, zzCurrentPosL, zzMarkedPosL);
-        zzCharCount = Character.charCount(zzCh);
-        switch (zzCh) {
-        case '\u000B':  // fall through
-        case '\u000C':  // fall through
-        case '\u0085':  // fall through
-        case '\u2028':  // fall through
-        case '\u2029':
-          yyline++;
-          yycolumn = 0;
-          zzR = false;
-          break;
-        case '\r':
-          yyline++;
-          yycolumn = 0;
-          zzR = true;
-          break;
-        case '\n':
-          if (zzR)
-            zzR = false;
-          else {
-            yyline++;
-            yycolumn = 0;
-          }
-          break;
-        default:
-          zzR = false;
-          yycolumn += zzCharCount;
-        }
-      }
-
-      if (zzR) {
-        // peek one character ahead if it is
-        // (if we have counted one line too much)
-        boolean zzPeek;
-        if (zzMarkedPosL < zzEndReadL)
-          zzPeek = zzBufferL[zzMarkedPosL] == '\n';
-        else if (zzAtEOF)
-          zzPeek = false;
-        else {
-          boolean eof = zzRefill();
-          zzEndReadL = zzEndRead;
-          zzMarkedPosL = zzMarkedPos;
-          zzBufferL = zzBuffer;
-          if (eof)
-            zzPeek = false;
-          else
-            zzPeek = zzBufferL[zzMarkedPosL] == '\n';
-        }
-        if (zzPeek) yyline--;
-      }
       zzAction = -1;
 
       zzCurrentPosL = zzCurrentPos = zzStartRead = zzMarkedPosL;
@@ -688,27 +633,32 @@ class Yylex {
             { System.out.print(yytext());
             }
           // fall through
-          case 6: break;
-          case 2:
-            { System.out.print("<digitos>");
-            }
-          // fall through
           case 7: break;
-          case 3:
-            { System.out.print("<ident>");
+          case 2:
+            { System.out.print("<(>");
             }
           // fall through
           case 8: break;
-          case 4:
-            { System.out.print("<KW_INT>");
+          case 3:
+            { System.out.print("<digitos>");
             }
           // fall through
           case 9: break;
-          case 5:
-            { System.out.print("<KW_RETURN>");
+          case 4:
+            { System.out.print("<ident>");
             }
           // fall through
           case 10: break;
+          case 5:
+            { System.out.print("<KW_INT>");
+            }
+          // fall through
+          case 11: break;
+          case 6:
+            { System.out.print("<KW_RETURN>");
+            }
+          // fall through
+          case 12: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
